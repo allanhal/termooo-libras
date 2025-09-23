@@ -7,15 +7,7 @@
     <title>✋</title>
     <style>
         :root {
-            /* --bg: #e6eef8;
-            --cell: #e6eef;
-            --txt: #0f1724;
-            --green: #16a34a;
-            --yellow: #f59e0b;
-            --gray: #6b7280 */
-
             --bg: #EBD9D1;
-
             --cell: #EBD9D1;
             --txt: #B87C4C;
             --border: #A8BBA3;
@@ -37,7 +29,6 @@
 
         .app {
             width: 360px;
-            padding: 20px
         }
 
         h1 {
@@ -53,18 +44,18 @@
         }
 
         .row {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
         }
 
         .cell {
-            height: 58px;
+            height: 48px;
+            width: 48px;
+
             background: var(--cell);
             border: 2px solid var(--border);
             display: flex;
-            align-items: center;
-            justify-content: center;
             font-weight: 700;
             font-size: 22px;
             border-radius: 6px
@@ -149,7 +140,6 @@
 
 <body>
     <div class="app">
-        <!-- <h1>Termo (clone) — com LIBRAS</h1> -->
         <h1>
             <img class="datilologia" src="assets/t.png" alt="">
             <img class="datilologia" src="assets/e.png" alt="">
@@ -163,10 +153,6 @@
         <div class="controls">
             <button id="btn-backspace">⌫</button>
             <button id="btn-submit">➥</button>
-            <!-- <button id="btn-submit">Enviar</button> -->
-            <!-- send emoticon -->
-
-            <!-- <button id="btn-reset">Novo</button> -->
         </div>
         <div class="keyboard" id="keyboard">
             <div class="keyboard-layer" id="keyboard-top"></div>
@@ -177,8 +163,6 @@
         <!-- <div class="hint">Ative o botão de LIBRAS (VLibras) no canto para tradução em Libras.</div> -->
         <footer>Versão com palavra do dia</footer>
     </div>
-
-    <!-- <img src="assets/a.png" alt="" srcset=""> -->
 
     <!-- VLibras widget -->
     <!-- <div vw class="enabled">
@@ -203,6 +187,7 @@
     <script>
 
         const imageSize = 48;
+        const ratio = 0.45;
 
         /* === Lista de palavras (somente 5 letras, sem acento) === */
         const WORDS = [
@@ -266,8 +251,8 @@
             const k = document.createElement('img');
             k.className = 'key';
             k.src = `assets/${l}.png`;
-            k.width = imageSize;
-            k.height = imageSize;
+            k.width = imageSize * ratio;
+            k.height = imageSize * ratio;
             k.addEventListener('click', () => pressLetter(l));
             keyboardTop.appendChild(k);
         });
@@ -277,8 +262,8 @@
             const k = document.createElement('img');
             k.className = 'key';
             k.src = `assets/${l}.png`;
-            k.width = imageSize;
-            k.height = imageSize;
+            k.width = imageSize * ratio;
+            k.height = imageSize * ratio;
             k.addEventListener('click', () => pressLetter(l));
             keyboardMid.appendChild(k);
         });
@@ -287,15 +272,14 @@
             const k = document.createElement('img');
             k.className = 'key';
             k.src = `assets/${l}.png`;
-            k.width = imageSize;
-            k.height = imageSize;
+            k.width = imageSize * ratio;
+            k.height = imageSize * ratio;
             k.addEventListener('click', () => pressLetter(l));
             keyboardLow.appendChild(k);
         });
 
         document.getElementById('btn-backspace').onclick = backspace;
         document.getElementById('btn-submit').onclick = submit;
-        // document.getElementById('btn-reset').onclick = resetGame;
 
         document.addEventListener('keydown', (e) => {
             if (e.key === "Enter") submit();
@@ -324,14 +308,11 @@
             if ('' == val) { sel.removeChild(sel.firstChild); return; }
 
             const k = document.createElement('img');
-            // k.className = 'key';
             k.src = `assets/${val}.png`;
             k.width = imageSize;
             k.height = imageSize;
-            // keyboardLow.appendChild(k);
             sel.appendChild(k);
 
-            // sel.textContent = val;
         }
 
         function submit() {
