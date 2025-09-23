@@ -139,6 +139,11 @@
             color: var(--cell);
             text-align: center
         }
+
+        .datilologia {
+            width: 32px;
+            height: 32px;
+        }
     </style>
 </head>
 
@@ -146,13 +151,13 @@
     <div class="app">
         <!-- <h1>Termo (clone) — com LIBRAS</h1> -->
         <h1>
-            <img src="assets/t.png" alt="" width="32" height="32">
-            <img src="assets/e.png" alt="" width="32" height="32">
-            <img src="assets/r.png" alt="" width="32" height="32">
-            <img src="assets/m.png" alt="" width="32" height="32">
-            <img src="assets/o.png" alt="" width="32" height="32">
-            <img src="assets/o.png" alt="" width="32" height="32">
-            <img src="assets/o.png" alt="" width="32" height="32">
+            <img class="datilologia" src="assets/t.png" alt="">
+            <img class="datilologia" src="assets/e.png" alt="">
+            <img class="datilologia" src="assets/r.png" alt="">
+            <img class="datilologia" src="assets/m.png" alt="">
+            <img class="datilologia" src="assets/o.png" alt="">
+            <img class="datilologia" src="assets/o.png" alt="">
+            <img class="datilologia" src="assets/o.png" alt="">
         </h1>
         <div id="grid"></div>
         <div class="controls">
@@ -170,7 +175,7 @@
         </div>
         <!-- <div class="status" id="status">Tente adivinhar a palavra em 6 tentativas.</div> -->
         <!-- <div class="hint">Ative o botão de LIBRAS (VLibras) no canto para tradução em Libras.</div> -->
-        <!-- <footer>Versão com palavra do dia</footer> -->
+        <footer>Versão com palavra do dia</footer>
     </div>
 
     <!-- <img src="assets/a.png" alt="" srcset=""> -->
@@ -183,33 +188,44 @@
         </div>
     </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script> new window.VLibras.Widget('https://vlibras.gov.br/app'); </script> -->
-    <!-- <script type="module" src="node_modules/dictionary-pt/index.js"></script> -->
+    <script>
+        const librasWidget = new window.VLibras.Widget('https://vlibras.gov.br/app');
+        setTimeout(() => {
+            console.log(librasWidget);
+            // console.log('window.librasWidget', window.librasWidget)
+            // console.log('window.librasWidget.player', window.librasWidget.player)
+            // if (window.librasWidget.player) {
+            //     window.librasWidget.player.translate("Olá, tudo bem?");
+            // }
+        }, 2000);
+    </script> -->
 
     <script>
 
+        const imageSize = 48;
+
         /* === Lista de palavras (somente 5 letras, sem acento) === */
         const WORDS = [
-            "livro",
+            // "livro",
             "casal",
             "ratos",
-            "vista",
-            "tempo",
-            "sonho",
-            "cerca",
-            "papel",
-            "jogar",
-            "chute",
-            "torre",
-            "linha",
-            "banco",
-            "ficar",
-            "termo",
-            "ninho",
-            "grato",
-            "rumor",
-            "plano",
-            "crise"
+            // "vista",
+            // "tempo",
+            // "sonho",
+            // "cerca",
+            // "papel",
+            // "jogar",
+            // "chute",
+            // "torre",
+            // "linha",
+            // "banco",
+            // "ficar",
+            // "termo",
+            // "ninho",
+            // "grato",
+            // "rumor",
+            // "plano",
+            // "crise"
         ];
 
         /* Função para obter palavra do dia com base na data */
@@ -250,8 +266,8 @@
             const k = document.createElement('img');
             k.className = 'key';
             k.src = `assets/${l}.png`;
-            k.width = 32;
-            k.height = 32;
+            k.width = imageSize;
+            k.height = imageSize;
             k.addEventListener('click', () => pressLetter(l));
             keyboardTop.appendChild(k);
         });
@@ -261,8 +277,8 @@
             const k = document.createElement('img');
             k.className = 'key';
             k.src = `assets/${l}.png`;
-            k.width = 32;
-            k.height = 32;
+            k.width = imageSize;
+            k.height = imageSize;
             k.addEventListener('click', () => pressLetter(l));
             keyboardMid.appendChild(k);
         });
@@ -271,19 +287,11 @@
             const k = document.createElement('img');
             k.className = 'key';
             k.src = `assets/${l}.png`;
-            k.width = 32;
-            k.height = 32;
+            k.width = imageSize;
+            k.height = imageSize;
             k.addEventListener('click', () => pressLetter(l));
             keyboardLow.appendChild(k);
         });
-
-        const k = document.createElement('img');
-        k.className = 'key';
-        k.src = 'assets/a.png';
-        k.width = 32;
-        k.height = 32;
-        k.addEventListener('click', () => pressLetter(l));
-        keyboardLow.appendChild(k);
 
         document.getElementById('btn-backspace').onclick = backspace;
         document.getElementById('btn-submit').onclick = submit;
@@ -318,8 +326,8 @@
             const k = document.createElement('img');
             // k.className = 'key';
             k.src = `assets/${val}.png`;
-            k.width = 32;
-            k.height = 32;
+            k.width = imageSize;
+            k.height = imageSize;
             // keyboardLow.appendChild(k);
             sel.appendChild(k);
 
