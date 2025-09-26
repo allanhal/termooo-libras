@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.2",
+    "express": "^5.1.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "name": "termooo-libras",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://allanhal@github.com/allanhal/termooo-libras.git",
+  "author": "Allan Araújo <allan.hal@gmail.com>",
+  "license": "MIT"
+}
