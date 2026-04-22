@@ -1,0 +1,140 @@
+.termooo-page {
+  --bg: #ebd9d1;
+  --cell: #ebd9d1;
+  --txt: #b87c4c;
+  --border: #a8bba3;
+  --green: #67c090;
+  --yellow: #feb21a;
+  --gray: #6b7280;
+
+  background: var(--bg);
+  color: var(--txt);
+  font-family: Inter, system-ui, Segoe UI, Arial;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.termooo-top {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.termooo-app {
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.termooo-title {
+  justify-content: center;
+  margin: 8px 0 12px;
+}
+
+.termooo-title .datilologia {
+  width: 32px;
+  height: 32px;
+}
+
+.termooo-app .grid {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 8px;
+}
+
+.termooo-app .termooo-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.termooo-app .cell {
+  height: 48px;
+  width: 48px;
+  background: var(--cell);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 22px;
+  border-radius: 6px;
+}
+
+.termooo-app .cell.green {
+  background: var(--green) !important;
+  color: white;
+}
+
+.termooo-app .cell.yellow {
+  background: var(--yellow) !important;
+  color: white;
+}
+
+.termooo-app .cell.dark {
+  background: var(--gray) !important;
+  color: white;
+}
+
+.termooo-controls {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.termooo-controls .control-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--cell);
+  border: 1px solid var(--txt);
+  color: var(--txt);
+  cursor: pointer;
+  font: inherit;
+  font-size: 18px;
+}
+
+.termooo-app .keyboard-layer {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 0;
+}
+
+.termooo-app .key {
+  padding: 8px;
+  border-radius: 6px;
+  background: var(--cell);
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid var(--border);
+}
+
+.termooo-app .key.green {
+  background: var(--green) !important;
+}
+.termooo-app .key.yellow {
+  background: var(--yellow) !important;
+}
+.termooo-app .key.dark {
+  background: var(--gray) !important;
+}
+
+.termooo-status {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.termooo-footer {
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: center;
+  opacity: 0.7;
+}

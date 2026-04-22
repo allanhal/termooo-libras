@@ -23,8 +23,8 @@ export default function Home() {
         <Button
           variant="contained"
           size="large"
-          component="a"
-          href="/termooo/"
+          component={Link}
+          to="/termooo"
         >
           Jogar Termooo
         </Button>

@@ -8,12 +8,14 @@ import "./App.css";
 import Home from "./pages/Home.jsx";
 import Detect from "./pages/Detect.jsx";
 import Admin from "./pages/Admin.jsx";
+import Termooo from "./pages/Termooo.jsx";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/termooo" element={<Termooo />} />
         <Route path="/detect" element={<Detect />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
