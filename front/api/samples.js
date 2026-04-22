@@ -1,8 +1,22 @@
 import { sql, ensureSchema } from "./_db.js";
+import { isAdmin } from "./_auth.js";
 
 export default async function handler(req, res) {
   try {
     await ensureSchema();
+
+    if (req.method === "DELETE") {
+      if (!isAdmin(req)) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      const id = Number.parseInt(req.query?.id, 10);
+      if (!Number.isFinite(id)) {
+        return res.status(400).json({ error: "id (integer) query param required" });
+      }
+      const rows = await sql`DELETE FROM samples WHERE id = ${id} RETURNING id`;
+      if (!rows.length) return res.status(404).json({ error: "Not found" });
+      return res.status(200).json({ deletedId: rows[0].id });
+    }
 
     if (req.method === "GET") {
       const rows = await sql`
@@ -37,7 +51,7 @@ export default async function handler(req, res) {
       return res.status(201).json({ sample: row });
     }
 
-    res.setHeader("Allow", "GET, POST");
+    res.setHeader("Allow", "GET, POST, DELETE");
     return res.status(405).json({ error: "Method not allowed" });
   } catch (err) {
     console.error("[api/samples]", err);

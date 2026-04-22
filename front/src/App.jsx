@@ -7,6 +7,7 @@ import "./App.css";
 
 import Home from "./pages/Home.jsx";
 import Detect from "./pages/Detect.jsx";
+import Admin from "./pages/Admin.jsx";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detect" element={<Detect />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );

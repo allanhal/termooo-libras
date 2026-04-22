@@ -37,6 +37,14 @@ export default function Home() {
           Detectar sinais (beta)
         </Button>
       </Stack>
+      <Button
+        size="small"
+        component={Link}
+        to="/admin"
+        sx={{ color: "text.secondary", mt: 4 }}
+      >
+        admin
+      </Button>
     </Stack>
   );
 }
