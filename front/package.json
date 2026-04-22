@@ -13,9 +13,12 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@fontsource/roboto": "^5.2.8",
+    "@mediapipe/tasks-vision": "^0.10.34",
     "@mui/material": "^7.3.2",
+    "@sqlite.org/sqlite-wasm": "^3.53.0-build1",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.14.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
