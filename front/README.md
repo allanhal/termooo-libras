@@ -1,16 +1,35 @@
-# React + Vite
+# Termooo Libras — Front
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite app with:
 
-Currently, two official plugins are available:
+- `/` — landing page (links to Termooo and to the detector)
+- `/termooo/` — legacy Termooo game (served as static files from `public/termooo/`)
+- `/detect` — webcam hand-sign detector (MediaPipe Hands + k-NN classifier)
+- `/api/samples` — Vercel serverless function that reads/writes hand samples in Neon Postgres
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Local development
 
-## React Compiler
+Install deps once:
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```sh
+yarn install
+```
 
-## Expanding the ESLint configuration
+Then choose:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **UI only** (no database/API): `yarn dev` — the `/detect` page will load but will fail to fetch or save samples.
+- **Full stack** (UI + serverless `/api/*` routes + Neon): `npx vercel dev` inside this folder. Put the `DATABASE_URL` into `.env.local` (already in `.gitignore`).
+
+## Environment variables
+
+| Name           | Description                                      |
+| -------------- | ------------------------------------------------ |
+| `DATABASE_URL` | Neon Postgres connection string (pooled, SSL).   |
+
+Set it in Vercel Project Settings → Environment Variables for production.
+
+## Deploy (Vercel)
+
+- Set **Root Directory** = `front` in the Vercel project settings.
+- Framework preset: Vite.
+- Add `DATABASE_URL` as an Environment Variable.
